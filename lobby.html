@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        // Function to extract the target URL from the query parameter
+        function getTargetUrl() {
+            // Parse the current URL
+            var url = new URL(window.location.href);
+
+            // Get the 'target' query parameter value, if it exists
+            var targetParam = url.searchParams.get("target");
+
+            // If 'target' parameter is found, use it as the redirect URL
+            if (targetParam) {
+                return targetParam;
+            } else {
+                // Default URL if 'target' parameter is not provided
+                return "discord.gg/leumina";
+            }
+        }
+
+        // Function to perform the redirection
+        function redirectToTarget() {
+            var targetUrl = getTargetUrl();
+
+            // Check if the target URL starts with 'steam://' protocol
+            if (targetUrl.startsWith("steam://")) {
+                // Open the Steam URL using JavaScript
+                window.location.href = targetUrl;
+            } else {
+                // Redirect to other URLs using standard HTTP
+                window.location.href = targetUrl;
+            }
+        }
+
+        // Automatically call redirectToTarget when the page loads
+        window.onload = redirectToTarget;
+    </script>
+</head>
+<body>
+</body>
+</html>
